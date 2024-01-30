@@ -14,13 +14,13 @@ import {
 } from "@/components/ui/card";
 import { Ruler, FlaskConical, Sigma } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ChapterCardWidget from "@/components/chapter-card/chapter-card-widget";
 
 export default function Home() {
 	return (
 		<main className="flex flex-col h-screen w-screen justify-center items-center">
 			<ModeToggle className="absolute top-0 left-0"></ModeToggle>
-			<SubjectWidget/>
-			<HoursStudiedWidget/>
+			<ChapterCardWidget chapterName="Current Electricity" lastYearQ={10} last5YearQ={50} />
 		</main>
 	);
 }
