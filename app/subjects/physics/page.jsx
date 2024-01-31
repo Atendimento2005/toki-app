@@ -5,6 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import ChapterCardWidget from "@/components/chapter-card/chapter-card-widget";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Emoji from "@/components/ui/emoji";
+
+import {
+	Card,
+	CardContent,
+	CardHeader,
+	CardTitle,
+	CardDescription,
+} from "@/components/ui/card";
+
+import StatusWidget from "./status-widget";
+import StatusPieChart from "./status-pie-chart";
+import StatusLabel from "./status-label";
 
 export default function Physics() {
 	return (
@@ -14,18 +27,49 @@ export default function Physics() {
 					<ChevronLeft />
 				</Button>
 				<div className="flex flex-row gap-3 items-center">
-					<Ruler size={38} />
+					<Emoji symbol="📏" className="text-4xl"></Emoji>
 					<h1 className="font-bold text-4xl md:text-5xl">Physics</h1>
 				</div>
 				<Separator className="my-3"></Separator>
-				<Tabs>
+				<Tabs defaultValue="progress">
 					<TabsList className="w-full gap-3 md:h-11">
-						<TabsTrigger value="progress" className="w-1/2 md:text-md md:py-2">Progress</TabsTrigger>
-						<TabsTrigger value="chapters" className="w-1/2 md:text-md md:py-2">Chapters</TabsTrigger>
+						<TabsTrigger value="progress" className="w-1/2 md:text-md md:py-2">
+							Progress
+						</TabsTrigger>
+						<TabsTrigger value="chapters" className="w-1/2 md:text-md md:py-2">
+							Chapters
+						</TabsTrigger>
 					</TabsList>
-					<TabsContent value="progress"></TabsContent>
+					<TabsContent value="progress">
+						<div className="flex flex-row gap-5 items-center w-full mb-3">
+							<StatusPieChart
+								className="md:m-10 m-5"
+								side={150}
+								data={[
+									{ status: "willLeave", count: 3 },
+									{ status: "weak", count: 9 },
+									{ status: "medium", count: 7 },
+									{ status: "strong", count: 4 },
+									{ status: "untracked", count: 5 },
+								]}
+								innerRadius={65}
+							/>
+							<div className="flex flex-col gap-3">
+								<StatusLabel status="willLeave"/>
+								<StatusLabel status="weak"/>
+								<StatusLabel status="medium"/>
+								<StatusLabel status="strong"/>
+							</div>
+						</div>
+						<div className="flex flex-wrap gap-3 last:mb-3">
+							<StatusWidget count={10} variant="willLeave"></StatusWidget>
+							<StatusWidget count={10} variant="weak"></StatusWidget>
+							<StatusWidget count={10} variant="medium"></StatusWidget>
+							<StatusWidget count={10} variant="strong"></StatusWidget>
+						</div>
+					</TabsContent>
 					<TabsContent value="chapters">
-						<div className="flex flex-col gap-3">
+						<div className="flex flex-col gap-3 last:mb-3">
 							<ChapterCardWidget
 								chapterName="Current Electricity"
 								lastYearQ={10}
