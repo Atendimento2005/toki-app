@@ -14,7 +14,7 @@ export default function TimeStats() {
 	return (
 		<Card className="w-full h-72 my-12">
 			<CardHeader className="text-left">
-				<CardTitle className="text-2xl">Today's stats</CardTitle>
+				<CardTitle className="text-2xl">Today&apos;s stats</CardTitle>
 			</CardHeader>
 			<CardContent className="grid grid-cols-5 h-52">
 				<h1 className="text-6xl font-bold col-span-3 text-center grid place-items-center">09:05:21</h1>
