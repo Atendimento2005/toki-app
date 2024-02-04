@@ -16,11 +16,22 @@ import { Ruler, FlaskConical, Sigma } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ChapterCardWidget from "@/components/chapter-card/chapter-card-widget";
 
+import Greeting from "@/components/dashboard/greeting"
+import TimeStats from "@/components/dashboard/time-stats";
+
 export default function Home() {
 	return (
-		<main className="flex flex-col h-screen w-screen justify-center items-center">
-			<ModeToggle className="absolute top-0 left-0"></ModeToggle>
-			<ChapterCardWidget chapterName="Current Electricity" lastYearQ={10} last5YearQ={50} />
+		<main className="h-screen w-screen grid grid-cols-5">
+			<div className="left-nav col-span-1 border-r-2 mr-10">
+				hello
+			</div>
+			<div className="dashboard col-span-3 px-12 py-16">
+				<Greeting user="bhutta"/>
+				<TimeStats />
+			</div>
+			<div className="right-nav col-span-1 border-l-2 flex justify-center px-8">
+				<HoursStudiedWidget />
+			</div>
 		</main>
 	);
 }
